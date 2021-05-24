@@ -49,8 +49,8 @@ namespace Jernbanefrvltr_function
                         Faultreport task = new Faultreport()
                         {
                             ID = (int)reader["ID"],
-                            TraintrackID = reader["TraintrackID"].ToString(),
-                            EquipmentID = reader["EquipmentID"].ToString()
+                            TraintrackID = (int)reader["TraintrackID"],
+                            EquipmentID = (int)reader["EquipmentID"]
                             
                         };
                         taskList.Add(task);

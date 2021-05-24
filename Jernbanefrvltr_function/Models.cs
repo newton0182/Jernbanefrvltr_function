@@ -8,8 +8,8 @@ namespace Jernbanefrvltr_function
     {
 
         public int ID { get; set; }
-        public string TraintrackID { get; set; }
-        public string EquipmentID { get; set; }
+        public int TraintrackID { get; set; }
+        public int EquipmentID { get; set; }
         public DateTime Datoogtid { get; set; }
 
     }
