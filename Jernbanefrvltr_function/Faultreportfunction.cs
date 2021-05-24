@@ -50,8 +50,10 @@ namespace Jernbanefrvltr_function
                         {
                             ID = (int)reader["ID"],
                             TraintrackID = (int)reader["TraintrackID"],
-                            EquipmentID = (int)reader["EquipmentID"]
-                            
+                            EquipmentID = (int)reader["EquipmentID"],
+                            Datoogtid = (DateTime)reader["Datoogtid"]
+
+
                         };
                         taskList.Add(task);
                     }
