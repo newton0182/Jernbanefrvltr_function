@@ -17,7 +17,7 @@ namespace Jernbanefrvltr_function
     {
         [FunctionName("Faultreportfunction")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
             ILogger log, ExecutionContext context)
         {
             var config = new ConfigurationBuilder()
@@ -41,7 +41,7 @@ namespace Jernbanefrvltr_function
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    var query = @"Select * from Faultreport";
+                    var query = @"stp_getfejlmeldinger";
                     SqlCommand command = new SqlCommand(query, conn);
                     var reader = await command.ExecuteReaderAsync();
                     while (reader.Read())
@@ -51,9 +51,14 @@ namespace Jernbanefrvltr_function
                             ID = (int)reader["ID"],
                             TraintrackID = (int)reader["TraintrackID"],
                             EquipmentID = (int)reader["EquipmentID"],
-                            Datoogtid = (DateTime)reader["Datoogtid"]
-
-
+                            Datoogtid = (DateTime)reader["Datoogtid"],
+                            Banenummer = reader["Banenummer"].ToString(),
+                            Lokation = reader["Lokation"].ToString(),
+                            Banetype = reader["Banetype"].ToString(),
+                            Modelnummer = reader["Modelnummer"].ToString(),
+                            Udstyrstype = reader["Udstyrstype"].ToString(),
+                            Producent = reader["Producent"].ToString(),
+                            Medarbejder = reader["Medarbejder"].ToString()
                         };
                         taskList.Add(task);
                     }
